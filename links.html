@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>demo1</title>
+	<style type="text/css">
+		#vd{
+			width:500px;
+			height:380px;
+			position: absolute;
+			top:50%;
+			left:50%;
+			transform: translate(-50%,-50%);
+		}
+		#adv{
+			position: fixed;
+			top:50%;
+			left:50%;
+			transform: translate(-50%,-50%);
+
+		}
+     #adv > b{
+     	position: absolute;
+     	top:5px;
+     	right:5px;
+       width:22px;
+       height:22px;
+       background: #999;
+       border-radius: 50%;
+       text-align: center;
+       cursor:pointer;
+   
+     }
+		#btPlay{
+      position: absolute;
+      top: 50%;
+      left:50%;
+      margin-left: -32px;
+      margin-top: -32px;
+    }
+	</style>
+</head>
+<body>
+<div id="vd">
+	<video width="500" height="380"  id="vd_tab" >
+  <source src="movie.mp4" type="video/ogg">
+  <source src="movie.mp4" type="video/mp4">
+   您的浏览器版本太低，不支持此视频格式
+</video>
+<div id="adv">
+	<a href="https://pages.tmall.com/wow/chaoshi/act/yili1" target="_blank"><img src="adv.jpg" width="320" height="150"></a>
+	<b>×</b>
+</div>
+<a href="#" id="btPlay"><img src="play.png"/></a>
+</div>
+<script type="text/javascript">
+var vd_tab=document.getElementById("vd_tab");
+var adv=document.getElementById("adv");
+var btPlay=document.getElementById("btPlay");
+var gb=document.querySelector("#adv>b");
+ vd_tab.pause();
+ adv.style.display = 'none';
+btPlay.onclick = function(e){
+  e.preventDefault();
+  if(vd_tab.paused){
+   vd_tab.play();
+   this.firstElementChild.src = "pause.png";
+    adv.style.display = 'none';
+  }else{
+   vd_tab.pause();
+   this.firstElementChild.src = "play.png";
+   	adv.style.display = 'block';
+  }
+}
+gb.onclick=function(){
+	adv.style.display="none"
+}
+</script>
+</body>
+</html>
